@@ -1,22 +1,18 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:first_project/controller/auth/socialmediasharedsignupandlogin_controller.dart';
 import 'package:first_project/core/constant/routes.dart';
 import 'package:first_project/core/constant/statusrequest.dart';
 import 'package:first_project/core/function/handlingdata.dart';
-import 'package:first_project/core/services/services.dart';
-import 'package:first_project/data/remote/auth/login_data.dart';
 import 'package:first_project/data/remote/auth/signup_data.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
-class SignUpController extends GetxController {
+class SignUpController extends SocialMediaSharedSignupAndLogin {
   bool appear = true;
   GlobalKey<FormState> formState = GlobalKey<FormState>();
   late TextEditingController email;
   late TextEditingController password;
   late TextEditingController name;
   late TextEditingController phone;
-  StatusRequest statusRequest = StatusRequest.none;
   showHidePassword() {
     appear = !appear;
     update();
@@ -26,49 +22,6 @@ class SignUpController extends GetxController {
     Get.offNamed(AppRoute.login);
   }
 
-  Future signInWithGoogle() async {
-    statusRequest = StatusRequest.loading;
-    update();
-    // Trigger the authentication flow
-    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-    print(
-        "========================googleUser======================${googleUser}");
-    if (googleUser == null) {
-      statusRequest = StatusRequest.none;
-      update();
-      return;
-    }
-
-    // Obtain the auth details from the request
-    final GoogleSignInAuthentication? googleAuth =
-        await googleUser.authentication;
-    print(
-        "======================googleAuth========================${googleAuth}");
-
-    // Create a new credential
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth?.accessToken,
-      idToken: googleAuth?.idToken,
-    );
-
-    print(
-        "=========================credential=====================${credential}");
-
-    // Once signed in, return the UserCredential
-    try {
-      await FirebaseAuth.instance.signInWithCredential(credential);
-      myServices.sharedPreferences.setString("idlogin", "1");
-
-      Get.offNamed(AppRoute.homepage);
-      print("=========================try=====================");
-    } catch (e) {
-      statusRequest = StatusRequest.none;
-      update();
-      print("=========================catch=====================");
-    }
-  }
-
-  MyServices myServices = Get.find();
   SignUpData signUpData = SignUpData();
   signUp() async {
     if (formState.currentState!.validate()) {

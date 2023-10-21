@@ -8,6 +8,8 @@ import 'package:first_project/view/screen/auth/verifycodesignup.dart';
 import 'package:first_project/view/screen/homepage.dart';
 import 'package:first_project/view/screen/onboardingscreen.dart';
 import 'package:first_project/view/screen/test.dart';
+import 'package:first_project/view/test/geolocator.dart';
+import 'package:first_project/view/test/notification.dart';
 import 'package:get/get.dart';
 
 import 'view/screen/auth/resetpassword/successresetpassword.dart';
@@ -67,7 +69,18 @@ List<GetPage<dynamic>>? routes = [
     name: AppRoute.homepage,
     page: () => const HomePage(),
   ),
+  //=======================Test===========================
+  GetPage(
+    name: AppRoute.geolocator,
+    page: () => const GeolcatorScreen(),
+  ),
+  //=======================Notification===========================
+  GetPage(
+    name: AppRoute.notification,
+    page: () => const NotificationScreen(),
+  ),
 ];
+
 // Map<String, Widget Function(BuildContext)> routes1 = {
 //   //=======================Test===========================
 //   AppRoute.test: (context) => const Test(),

@@ -2,9 +2,9 @@ class ApiLink {
   //=======================Route===========================
 
   // static const server = "http://192.168.1.103/firstproject";
-  static const server = "https://192.168.1.106/firstproject";
-  // static const server =
-  //     "https://firstprojectflutter.000webhostapp.com/firstproject";
+  // static const server = "https://192.168.1.106/firstproject";
+  static const server =
+      "https://firstprojectflutter.000webhostapp.com/firstproject";
   //=======================Auth===========================
 
   static const login = "$server/auth/login.php";

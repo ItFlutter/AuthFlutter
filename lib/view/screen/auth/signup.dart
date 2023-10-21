@@ -152,7 +152,25 @@ class SignUp extends StatelessWidget {
                                   onTap: () {
                                     controller.signInWithGoogle();
                                   },
-                                )
+                                ),
+                                CustomButtonSocialMedia(
+                                  svgName: AppImageAsset.facebook,
+                                  onTap: () {
+                                    controller.signInWithFacebook();
+                                  },
+                                ),
+                                CustomButtonSocialMedia(
+                                  svgName: AppImageAsset.twitter,
+                                  onTap: () {
+                                    controller.signInWithTwitter();
+                                  },
+                                ),
+                                CustomButtonSocialMedia(
+                                  svgName: AppImageAsset.github,
+                                  onTap: () {
+                                    controller.signInWithGitHub(context);
+                                  },
+                                ),
                               ],
                             ),
                             Row(

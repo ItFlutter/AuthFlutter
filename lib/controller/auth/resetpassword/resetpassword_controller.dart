@@ -34,6 +34,10 @@ class ResetPasswordController extends GetxController {
         update();
         if (statusRequest == StatusRequest.success) {
           if (response['status'] == "failure") {
+            Get.defaultDialog(
+                title: "Warning",
+                content: const Text(
+                    "Something went wrong and Password does not valid"));
             //No Thing To Do
           } else {
             Get.toNamed(AppRoute.successresetpassword);

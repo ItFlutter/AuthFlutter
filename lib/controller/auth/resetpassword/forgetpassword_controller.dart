@@ -20,7 +20,9 @@ class ForgetPasswordController extends GetxController {
       if (statusRequest == StatusRequest.success) {
         if (response['status'] == "failure") {
           return Get.defaultDialog(
-              title: "Warning", content: const Text("Email Not Valid"));
+              title: "Warning",
+              content:
+                  const Text("Email Not Valid or The email is not verified"));
         } else {
           Get.toNamed(AppRoute.verifycoderesetpassword,
               arguments: {"email": email.text});
